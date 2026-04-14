@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Lead {
+  id          String       @id @default(uuid())
+  email       String       @unique
+  firstName   String
+  lastName    String
+  company     String?
+  jobTitle    String?
+  employees   Int?
+
+  attribution Attribution?
+  score       LeadScore?
+
+  createdAt   DateTime     @default(now())
+}
+
+model Attribution {
+  id          String   @id @default(uuid())
+  leadId      String   @unique
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+
+  source      String   // e.g., "LinkedIn", "Organic", "Google Ads"
+  campaign    String?  // e.g., "Q3_Retargeting"
+
+  createdAt   DateTime @default(now())
+}
+
+model LeadScore {
+  id          String   @id @default(uuid())
+  leadId      String   @unique
+  lead        Lead     @relation(fields: [leadId], references:[id], onDelete: Cascade)
+
+  totalScore  Int      @default(0)
+  isMql       Boolean  @default(false) // Marketing Qualified Lead (Score > X)
+
+  updatedAt   DateTime @updatedAt
+}
