@@ -1,37 +1,35 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    /* Core Pathing */
+    "rootDir": "./src",
+    "outDir": "./dist",
     "target": "ES2023",
-    "lib": ["esnext"],
-    "types": ["node"],
 
+    /* Module System */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "moduleDetection": "force",
 
-    // Other Outputs
+    /* Strictness Header */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    /* Output */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
+    "removeComments": true,
 
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
+    /* Compatibility & Performance */
     "esModuleInterop": true,
-    "ignoreDeprecations": "6.0",
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
-  }
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES2023"],
+    "types": ["node"]
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

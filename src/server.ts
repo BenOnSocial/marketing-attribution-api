@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import cors from '@fastify/cors';
 import { PrismaBetterSqlite3 } from '@prisma/adapter-better-sqlite3';
-import { PrismaClient } from '../generated/prisma/client';
+import { PrismaClient } from '@prisma/client';
 import Fastify from 'fastify'
 import { z } from 'zod';
 
@@ -88,7 +88,7 @@ app.post('/leads', async (request, reply) => {
 });
 
 async function main() {
-    await app.listen({ port: 3000 });
+    await app.listen({ port: 3000, host: '0.0.0.0' });
     console.log('🚀 Lead Attribution API running at http://localhost:3000');
 }
 
